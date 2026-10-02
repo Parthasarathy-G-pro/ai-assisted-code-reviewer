@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodeLens | Code Review</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="logo">⌘</span>
+      <div><b>CodeLens</b><small>DEVELOPER INTELLIGENCE</small></div>
+    </div>
+    <p class="side-label">WORKSPACE</p>
+    <div class="nav active">▤ &nbsp; Code Review</div>
+    <div class="nav">◈ &nbsp; Static Analysis</div>
+    <div class="nav">⌁ &nbsp; Optimization Guide</div>
+    <div class="side-bottom">● &nbsp; Local analysis engine<br><small>Version 1.0.0</small></div>
+  </aside>
+
+  <main>
+    <header>
+      <div>
+        <span class="eyebrow">ENGINEERING TOOLKIT / ANALYSIS</span>
+        <h1>Code Review</h1>
+        <p>Understand complexity. Find risks. Optimize algorithms.</p>
+      </div>
+      <span class="status">● Engine Ready</span>
+    </header>
+
+    <section class="workspace">
+      <div class="editor-card">
+        <div class="card-head">
+          <div><b>Source Code</b>
+            <small>Paste your Python implementation</small>
+          </div>
+          <span class="language">PYTHON</span>
+        </div>
+
+        <div class="editor">
+          <div id="gutter">1</div>
+          <textarea id="code" spellcheck="false">def two_sum(nums, target):
+    for i in range(len(nums)):
+        for j in range(i + 1, len(nums)):
+            if nums[i] + nums[j] == target:
+                return [i, j]
+    return []</textarea>
+        </div>
+
+        <div class="editor-footer">
+          <span>Static analysis · Local server</span>
+          <button id="analyze">Analyze Code →</button>
+        </div>
+      </div>
+
+      <div class="config">
+        <h3>REVIEW CONTEXT</h3>
+        <label for="problem">Problem Pattern</label>
+        <select id="problem">
+          <option value="general">General Code</option>
+          <option value="two_sum" selected>Two Sum</option>
+          <option value="contains_duplicate">Contains Duplicate</option>
+          <option value="sorted_search">Binary Search</option>
+          <option value="top_k">Top K Elements</option>
+          <option value="frequency">Frequency Counting</option>
+        </select>
+
+        <p class="note">
+          Choose a known problem to compare your implementation
+          with a common algorithmic target.
+        </p>
+        <hr>
+        <h3>CHECKS ENABLED</h3>
+        <p>✓ Time & space complexity</p>
+        <p>✓ Algorithm optimization</p>
+        <p>✓ Security scanning</p>
+        <p>✓ Code metrics</p>
+      </div>
+    </section>
+
+    <p id="error" class="error"></p>
+
+    <section id="results" hidden>
+      <div class="report-heading">
+        <div><span class="eyebrow">ANALYSIS REPORT</span>
+          <h2>Review Insights</h2>
+        </div>
+        <span class="complete">● COMPLETE</span>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <small>Complexity Estimate</small>
+          <strong id="complexity">—</strong>
+          <span>Static heuristic</span>
+        </div>
+        <div class="stat">
+          <small>Optimization Target</small>
+          <strong id="target">—</strong>
+          <span>Selected pattern</span>
+        </div>
+        <div class="stat">
+          <small>Security Findings</small>
+          <strong id="issues">0</strong>
+          <span>Pattern-based scan</span>
+        </div>
+        <div class="stat">
+          <small>Code Functions</small>
+          <strong id="functions">0</strong>
+          <span>Detected functions</span>
+        </div>
+      </div>
+
+      <div class="insight-grid">
+        <article class="panel">
+          <h3>⌁ Complexity Analysis</h3>
+          <p id="complexity-notes"></p>
+        </article>
+        <article class="panel">
+          <h3>↗ Optimal Approach</h3>
+          <p id="guidance"></p>
+          <div class="target-row">
+            <span>Common target</span>
+            <b id="target-detail"></b>
+          </div>
+        </article>
+      </div>
+
+      <article class="panel security">
+        <h3>◇ Security Review</h3>
+        <div id="security-list"></div>
+      </article>
+
+      <article class="panel">
+        <h3>Analysis Limitations</h3>
+        <ul id="limitations"></ul>
+      </article>
+
+      <p id="metrics" class="metrics"></p>
+    </section>
+
+    <footer>
+      <span>CodeLens · Explainable code analysis</span>
+      <span>FastAPI + Python AST</span>
+    </footer>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
